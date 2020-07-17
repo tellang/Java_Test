@@ -25,6 +25,9 @@ public class Algo {
                     cal(st, --fin);
             }
                 break;
+            case 3:{
+
+            }
         }
     }
 
