@@ -4,25 +4,42 @@ import java.util.Arrays;
 
 public class PatternNum {
     public static int[] total;
+    public static int rightNum, leftNum, middleNum;
 
-    public static boolean isPattern(int a, int b, int c) {
-        total = new int[]{a, b, c};
+    public static boolean isPattern(int firstNum, int secondNum) {
         int[] aPat = new int[4];
         int[] bPat = new int[4];
         int[] cPat = new int[4];
+        int distance = 0;
+        leftNum=0;
+        middleNum=0;
+        rightNum = 0;
 
-        bubbleSort(total);
-        distribute(a, aPat);
-        distribute(b, bPat);
-        distribute(c, cPat);
+        if(firstNum > secondNum){
+            middleNum = firstNum;
+            leftNum = secondNum;
+        }
+        else {
+            middleNum = secondNum;
+            leftNum = firstNum;
+        }
 
-        //arrTest(aPat);
-        //arrTest(bPat);
-        //arrTest(cPat);
 
-        if (total[2] - total[1] == total[1] - total[0])
-            return Arrays.equals(aPat, bPat) && Arrays.equals(aPat, cPat);
-        else
+        distribute(leftNum, aPat);
+        distribute(middleNum, bPat);
+
+        if (Arrays.equals(aPat, bPat)) {
+            distance = middleNum - leftNum;
+            rightNum = distance + middleNum;
+
+            distribute(rightNum, cPat);
+
+            if(Arrays.equals(aPat, cPat))
+                return true;
+
+            else
+                return false;
+        } else
             return false;
     }
 
@@ -51,14 +68,6 @@ public class PatternNum {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        int a = 1234;
-        int b = 1423;
-        int c = 2314;
-
-        System.out.println(isPattern(a, b, c));
     }
 
     public static void arrTest(int[] src) {

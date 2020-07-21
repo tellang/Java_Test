@@ -2,8 +2,10 @@ package StrangeNum;
 
 public class PrimeNum {
     static boolean[] prime;
+    static int length;
 
     public PrimeNum(int limit) {
+        length = 0;
         prime = new boolean[++limit];
         prime[0] = prime[1] = true;
 
@@ -13,6 +15,8 @@ public class PrimeNum {
                     prime[j] = true;
             }
         }
+        for(boolean i: prime)
+            if(!i) length++;
     }
 
     public static boolean isPrime(int index) {

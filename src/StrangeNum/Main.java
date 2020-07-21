@@ -1,19 +1,32 @@
 package StrangeNum;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         PrimeNum p = new PrimeNum(9999);
-        for (int i = 1000; i < 10000; i++) {
-            for (int j = 1000; j < 10000; j++) {
-                for (int k = 1000; k < 10000; k++) {
-                    if (PrimeNum.isPrime(i) && PrimeNum.isPrime(j) && PrimeNum.isPrime(k)
-                            && PatternNum.isPattern(i, j, k)
-                            && i != j && j != k && k != i) {
-                        System.out.println(Integer.toString(PatternNum.total[0]) +
-                                Integer.toString(PatternNum.total[1]) +
-                                Integer.toString(PatternNum.total[2]));
-                    }
+        int leftNum, middleNum, rightNum, index;
+        leftNum = middleNum = rightNum = index = 0;
+        ArrayList<Integer> primeIgnite = new ArrayList<>();
+
+        int[] prime = new int[PrimeNum.length];
+        for (int v = 1000; v < 10000; v++)
+            if (PrimeNum.isPrime(v))
+                prime[index++] = v;
+
+        for (int value : prime) {
+            for (int i : prime) {
+                if (PatternNum.isPattern(value, i) && PrimeNum.isPrime(PatternNum.rightNum)
+                        && value != i) {
+                    if (primeIgnite.contains(PatternNum.leftNum))
+                        continue;
+                    primeIgnite.add(PatternNum.leftNum);
+                    leftNum = PatternNum.leftNum;
+                    middleNum = PatternNum.middleNum;
+                    rightNum = PatternNum.rightNum;
+                    System.out.println(Integer.toString(leftNum) + middleNum + rightNum);
                 }
+
             }
         }
     }

@@ -26,8 +26,9 @@ public class Algo {
             }
                 break;
             case 3:{
-
+                
             }
+                break;
         }
     }
 
