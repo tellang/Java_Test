@@ -13,7 +13,7 @@ public class Solution {
         return answer;
     }
     public static void main (String[] args){
-        String[] participant = {"a", "b", "c", "d"};
+        String[] participant = {"a", "b", "c", "c"};
         String[] completion = {"a", "b", "c"};
         System.out.println(solution(participant, completion));
     }
