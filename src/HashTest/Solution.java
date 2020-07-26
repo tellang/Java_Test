@@ -7,8 +7,8 @@ import java.util.List;
 public class Solution {
     public static String solution(String[] participant, String[] completion) {
         List<String> loser = new ArrayList<>(Arrays.asList(participant));
-        for(String fisisher: completion)
-            loser.remove(fisisher);
+        for(String finisher: completion)
+            loser.remove(finisher);
         String answer = loser.get(0);
         return answer;
     }
