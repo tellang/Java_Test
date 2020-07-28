@@ -8,10 +8,7 @@ public class Duplicated_PhoneNumber {
         for (int i = 0, j = 0; i < phone_book.length-1; i++) {
             j = i+1;
             while (phone_book[i].length() <= phone_book[j].length()){
-                if(phone_book[i].equals(phone_book[j].substring(0, phone_book[i].length()))) {
-                    System.out.println(phone_book[i] + "vs" + phone_book[j].substring(0, phone_book[i].length()));
-                    return false;
-                }
+                if(phone_book[i].equals(phone_book[j].substring(0, phone_book[i].length()))) return false;
                 else {
                     System.out.println(phone_book[i] + "vs" + phone_book[j].substring(0, phone_book[i].length()));
                     if (j < phone_book.length - 1)
