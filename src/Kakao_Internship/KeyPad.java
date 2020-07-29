@@ -2,13 +2,20 @@ package Kakao_Internship;
 
 import java.util.HashMap;
 import java.util.Map;
+import static java.lang.StrictMath.abs;
 
 public class KeyPad {
     public static void main(String[]args){
         Solution s = new Solution();
         String hand = "right";
-        int[] num = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-        System.out.println(s.solution(num, hand));
+        int[] num = {3, 4, 2, 0};
+        System.out.println("test: "+s.solution(num, hand));
+        //System.out.println("answer: "+s.solutionK(num, hand));
+        Solution sol = new Solution();
+        System.out.println("TestL: "+sol.calDis(11, 32));
+        System.out.println("TestR: "+sol.calDis(2, 32)+"\n");
+        /*for(int i: num)
+            System.out.println(i+" - 0 dis: "+sol.calDis(sol.calPos(i), 32));*/
 
     }
 }
@@ -26,11 +33,11 @@ class Solution {
                        finPos.put("R", calPos(num));
                    }
                    else{
-                       if(disCal(finPos.get("R"), calPos(num)) > disCal(finPos.get("L"), calPos(num))){
+                       if(calDis(finPos.get("R"), calPos(num)) > calDis(finPos.get("L"), calPos(num))){
                            answer += "L";
                            finPos.put("L",calPos(num));
                        }
-                       else if(disCal(finPos.get("R"), calPos(num)) < disCal(finPos.get("L"), calPos(num))){
+                       else if(calDis(finPos.get("R"), calPos(num)) < calDis(finPos.get("L"), calPos(num))){
                            answer += "R";
                            finPos.put("R",calPos(num));
                        }
@@ -52,11 +59,11 @@ class Solution {
                    finPos.put("L",calPos(num));
                }break;
                default:{
-                    if(disCal(finPos.get("R"), calPos(num)) > disCal(finPos.get("L"), calPos(num))){
+                    if(calDis(finPos.get("R"), calPos(num)) > calDis(finPos.get("L"), calPos(num))){
                         answer += "L";
                         finPos.put("L",calPos(num));
                     }
-                    else if(disCal(finPos.get("R"), calPos(num)) < disCal(finPos.get("L"), calPos(num))){
+                    else if(calDis(finPos.get("R"), calPos(num)) < calDis(finPos.get("L"), calPos(num))){
                         answer += "R";
                         finPos.put("R",calPos(num));
                     }
@@ -76,12 +83,13 @@ class Solution {
         return answer;
     }
 
-    public static int disCal(int posA, int posB){
+    public static int calDis(int posA, int posB){
         int Ay = posA/10;
         int Ax = posA - Ay*10;
         int By = posB/10;
         int Bx = posB - By*10;
-        return (Ay-By)*(Ay-By) + (Ax-Bx)*(Ax-Bx); //yx
+        //return (Ay-By)*(Ay-By) + (Ax-Bx)*(Ax-Bx); //yx
+        return abs(Ay - By)+abs(Ax - Bx);
     }
 
     public static int calPos(int num){
@@ -94,5 +102,4 @@ class Solution {
             return (num-(num/3-buf)*3)%4+(num/3-buf)*10;
         }
     }
-
 }
