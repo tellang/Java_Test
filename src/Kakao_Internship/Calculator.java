@@ -6,10 +6,10 @@ import java.util.Stack;
 
 import static java.lang.StrictMath.abs;
 
-public class Calculater {
+public class Calculator {
     public static void main(String[] args) {
         String exp = "10*100*10000000*100-1000";
-        Calculater c = new Calculater();
+        Calculator c = new Calculator();
         System.out.println("urTest: " + c.solution(exp));
         System.out.println(stack(1, 2, 3, exp));
     }
